@@ -51,6 +51,12 @@ client/dist/
 client/build/
 server/node_modules/
 server/logs/
+
+# Do not track package files
+package.json
+package-lock.json
+**/package.json
+**/package-lock.json
 node_modules/
 .env
 dist/
