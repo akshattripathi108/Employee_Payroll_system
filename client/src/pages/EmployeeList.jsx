@@ -1,42 +1,26 @@
-const employees = [
-  {
-    name: "Aman Sharma",
-    gender: "Male",
-    dept: ["HR", "Finance"],
-    salary: "₹10,000",
-    date: "29 Oct 2019",
-  },
-];
+import { generateSlip } from "../utils/salarySlip";
 
-export default function EmployeeList() {
+export default function EmployeeList({ employees, onEdit, onDelete }) {
   return (
-    <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Start Date</th>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Salary</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {employees.map((e,i)=>(
+          <tr key={i}>
+            <td>{e.name}</td>
+            <td>{e.salary}</td>
+            <td>
+              <button onClick={()=>generateSlip(e)}>PDF</button>
+              <button onClick={()=>onEdit(i)}>Edit</button>
+              <button onClick={()=>onDelete(i)}>Delete</button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {employees.map((emp, i) => (
-            <tr key={i}>
-              <td>{emp.name}</td>
-              <td>{emp.gender}</td>
-              <td>
-                {emp.dept.map(d => (
-                  <span key={d} className="tag">{d}</span>
-                ))}
-              </td>
-              <td>{emp.salary}</td>
-              <td>{emp.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 }
