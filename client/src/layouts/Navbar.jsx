@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-export default function Navbar({ onAddUser }) {
+export default function Navbar() {
   return (
     <div className="navbar">
       <div className="logo">
-        EMPLOYEE <span>PAYROLL</span>
+        <span className="logo-icon">👤</span>
+        <div>
+          <strong>EMPLOYEE</strong><br/>
+          PAYROLL
+        </div>
       </div>
-
-      <button className="add-btn" onClick={onAddUser}>
-        + Add User
-      </button>
     </div>
   );
 }
+
 
